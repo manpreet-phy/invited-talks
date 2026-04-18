@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Photo Gallery</title>
+
+    <style>
+        body {
+            font-family: "Segoe UI", sans-serif;
+            margin: 0;
+            background: linear-gradient(to right, #ece9e6, #ffffff);
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            color: white;
+            text-align: center;
+            padding: 25px;
+            font-size: 28px;
+            letter-spacing: 1px;
+        }
+
+        /* Event section */
+        .event {
+            margin: 40px auto;
+            width: 85%;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0px 6px 15px rgba(0,0,0,0.15);
+        }
+
+        .event h2 {
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .event p {
+            margin-top: 0;
+            color: #777;
+            font-size: 14px;
+        }
+
+        /* Gallery grid */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+            margin-top: 15px;
+        }
+
+        /* Photo wrapper */
+        .photo {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+
+        /* Square thumbnails */
+        .photo img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.4s ease;
+        }
+
+        /* Hover zoom */
+        .photo:hover img {
+            transform: scale(1.08);
+        }
+
+        /* Caption overlay */
+        .caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 10px;
+            font-size: 13px;
+            color: white;
+            background: linear-gradient(to top, rgba(0,0,0,0.75), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            text-align: left;
+        }
+
+        .photo:hover .caption {
+            opacity: 1;
+        }
+
+        /* Lightbox */
+        #lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        #lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #555;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    📸 Invited Talks Album 📸
+</header>
+
+<!-- Event 1 -->
+<div class="event">
+    <h2>Transit of Venus 2012</h2>
+    <p>School outreach and skywatch event @ IIA Bangalore</p>
+
+    <div class="gallery">
+        <div class="photo" onclick="openImage('1_RVP_2026.jpg')">
+            <img src="1_RVP_2026.jpg">
+        </div>
+        <div class="photo" onclick="openImage('2_RVP_2026.jpg')">
+            <img src="2_RVP_2026.jpg">
+        </div>
+        <div class="photo" onclick="openImage('3_RVP_2026.jpg')">
+            <img src="3_RVP_2026.jpg">
+        </div>
+        <div class="photo" onclick="openImage('4_RVP_2026.jpg')">
+            <img src="4_RVP_2026.jpg">
+        </div>
+        <div class="photo" onclick="openImage('5_RVP_2026.jpg')">
+            <img src="5_RVP_2026.jpg">
+        </div>
+        <div class="photo" onclick="openImage('6_RVP_2026.jpg')">
+            <img src="6_RVP_2026.jpg">
+        </div>
+        <div class="photo" onclick="openImage('7_RVP_2026.jpg')">
+            <img src="7_RVP_2026.jpg">
+        </div>
+        <div class="photo" onclick="openImage('8_RVP_2026.jpg')">
+            <img src="8_RVP_2026.jpg">
+        </div>
+    </div>
+</div>
+
+<!-- Event 2 -->
+<div class="event">
+    <h2>Workshop on Quantum Technologies</h2>
+    <p>The LNM Institute of Information Technology (16-17 September, 2025)</p>
+
+    <div class="gallery">
+        <div class="photo" onclick="openImage('IMG_6578.HEIC')"><img src="IMG_6578.HEIC"></div>
+    </div>
+</div>
+
+<!-- Misc Section -->
+<div class="event">
+    <h2>Misc.</h2>
+    <p>Some other moments</p>
+
+    <div class="gallery">
+        <div class="photo" onclick="openImage('ICTP Summer School.jpeg')">
+            <img src="ICTP Summer School.jpeg">
+            <div class="caption">
+                Summer School on Quantum Many-Body Physics of Ultracold Atoms and Molecules (July 2–13, 2012), International Centre for Theoretical Physics, Trieste, Italy
+            </div>
+        </div>     
+    </div>
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox" onclick="closeImage()">
+    <img id="lightbox-img">
+</div>
+
+<footer>
+    © My Gallery | Built with GitHub Pages
+</footer>
+
+<script>
+function openImage(src) {
+    document.getElementById("lightbox").style.display = "flex";
+    document.getElementById("lightbox-img").src = src;
+}
+
+function closeImage() {
+    document.getElementById("lightbox").style.display = "none";
+}
+
+document.addEventListener("keydown", function(e) {
+    if (e.key === "Escape") {
+        closeImage();
+    }
+});
+</script>
+
+</body>
+</html>
